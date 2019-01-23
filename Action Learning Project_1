@@ -1,0 +1,20 @@
+data_Heap<-read.csv("Heap Clearance YTD_edited2.csv",header=TRUE, na.strings="NA") 
+data_Heap$X..Diff=as.numeric(sub("%","", data [,4]))
+data_Heap$D=as.numeric(sub("%","",data [,10])) 
+data_framel<-0
+for(i in 1:11285){
+ if(data_Heap$D[i]>=50 && (data_Heap$X..Diff[i]>=2 I data_Heap$X..Diff[i]<=-2)){
+ data_frame<-data.frame(data_Heap$Concentrate[i],data_Heap$X..Diff[i],data_Heap$D[i])
+ data_frame1<-rbind.data.frame(data_frame1,data_frame,make.row.names = FALSE)
+ }
+}
+data_framel[-1,]
+
+write.csv(data_framel,"BinF_weighfeedererrors.csv", row.names=FALSE)
+
+# Two year heap clearance data is considered to make conclusions on the weighfeeders giving errors off limits with maximum frequency
+#A,B,C,D,E,F are the bins above the respective weighfeeders
+#This code gives an idea on the percentage error when different weighfeeders are used and different amounts are charged in the bins
+# The code basically takes weigh_feeder error for each bin when the concentrate charged is greater than 50% and reports if 
+#its greater than 2% or less than -2%
+#Output goes to the file Bin'X'_weighfeeders.csv 
